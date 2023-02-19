@@ -2,8 +2,11 @@
 
 $i = 1;
 $j = 1;
+
+//set variables
 $firstVal = 4;
 $secondVal = 5;
+
 $firstNumb = $firstVal+1;
 $secondNumb = $secondVal+1;
 
