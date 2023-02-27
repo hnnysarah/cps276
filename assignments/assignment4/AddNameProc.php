@@ -1,29 +1,24 @@
 <?php 
-class AddNameProc {
-    public $output;
+class AddNamesProc {
 
    public function addClearNames() {
-        if (isset($_POST['submitName'])) {
-        return $output = self::addName();       
-    } else if (isset($_POST['submitClear'])) {
-        return $output = "";
+    if ($_POST['names'] == "") {
+        return "";
+    } else if (isset($_POST['submitName'])) {
+            $names = $_POST['names'];
+            $arr = explode(" ", $names);
+            $newName = $arr[1] . ", " . $arr[0];
+            $namelist = explode("\n", $_POST['namelist']);
+            array_push($namelist, $newName);
+            sort($namelist);
+            
+            $output = implode("\n", $namelist);
+            return $output;                
+     }  else if (isset($_POST['submitClear'])) {
+        return " ";
+        }
     }
-}
-
-public function addName() {
-    $namesToArr = [];
-    $names = $_POST['names'];
-    $namesToArr = explode(" ", $names);
-    $arrToString = $namesToArr[1] . ", " . $namesToArr[0];
-
-    if ($_POST['namelist'] !== "") {
-        $namesToArr = explode("\n", $_POST['namelist']);
-        array_push($namesToArr, $arrToString);
-        return implode("\n", $namesToArr);
-    } else {
-        return $namesToArr . "\n";
-    }
-}
 
 }
+
 ?>
